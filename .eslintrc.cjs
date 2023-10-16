@@ -37,6 +37,7 @@ module.exports = {
     '@typescript-eslint/semi': 'off',
     '@typescript-eslint/comma-dangle': 'off',
     '@typescript-eslint/space-before-function-paren': 'off',
+    '@typescript-eslint/member-delimiter-style': 'off',
     'import/no-absolute-path': 'off',
   },
 };
