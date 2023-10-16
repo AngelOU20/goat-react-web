@@ -1,0 +1,114 @@
+import PropTypes from 'prop-types';
+import {
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  ListItemButton,
+  Box,
+} from '@mui/material';
+import {
+  Dashboard,
+  Person,
+  Summarize,
+  Settings,
+  Logout,
+} from '@mui/icons-material';
+import { Link } from 'react-router-dom';
+
+interface Props {
+  drawerWidth?: number;
+}
+
+export const SideBar: React.FC<Props> = ({ drawerWidth = 240 }) => {
+  return (
+    <Box
+      component="div"
+      display="flex"
+      flexDirection="column"
+      gap="80px"
+      sx={{
+        backgroundColor: '#1F3B51',
+        width: { sm: drawerWidth },
+        height: '100vh',
+        flexShrink: { sm: 0 },
+        padding: '20px',
+      }}
+    >
+      <Box
+        component="div"
+        display="flex"
+        justifyContent="center"
+        alignContent="center"
+      >
+        <img src="/assets/logo_img.svg" alt="" />
+        <h1 className="logo__goat__text">Golden Arequipa</h1>
+      </Box>
+
+      <Box
+        component="nav"
+        display="flex"
+        flexDirection="column"
+        gap="60px"
+        sx={{ color: 'white' }}
+      >
+        <List>
+          <Link to="/">
+            <ListItem>
+              <ListItemButton className="btn__list__item active">
+                <ListItemIcon>
+                  <Dashboard className="icon__item" />
+                </ListItemIcon>
+                <ListItemText primary="Dashboard" />
+              </ListItemButton>
+            </ListItem>
+          </Link>
+
+          <Link to="/personal">
+            <ListItem>
+              <ListItemButton className="btn__list__item">
+                <ListItemIcon>
+                  <Person className="icon__item" />
+                </ListItemIcon>
+                <ListItemText primary="Personal" />
+              </ListItemButton>
+            </ListItem>
+          </Link>
+
+          <ListItem>
+            <ListItemButton className="btn__list__item">
+              <ListItemIcon>
+                <Summarize className="icon__item" />
+              </ListItemIcon>
+              <ListItemText primary="Habiaciones" />
+            </ListItemButton>
+          </ListItem>
+        </List>
+
+        <List>
+          <ListItem>
+            <ListItemButton className="btn__list__item">
+              <ListItemIcon>
+                <Settings className="icon__item" />
+              </ListItemIcon>
+              <ListItemText primary="Configuración" />
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem>
+            <ListItemButton className="btn__list__item">
+              <ListItemIcon>
+                <Logout className="icon__item" />
+              </ListItemIcon>
+              <ListItemText primary="Cerrar Sesión" />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </Box>
+    </Box>
+  );
+};
+
+SideBar.propTypes = {
+  drawerWidth: PropTypes.number,
+};
