@@ -25,7 +25,7 @@ const user = {
   photoURL: '/assets/user.png',
 };
 
-export const Navbar: React.FC<Props> = ({ drawerWidth = 240 }) => {
+export const Header: React.FC<Props> = ({ drawerWidth = 240 }) => {
   return (
     <Box
       position="fixed"
@@ -91,6 +91,6 @@ export const Navbar: React.FC<Props> = ({ drawerWidth = 240 }) => {
   );
 };
 
-Navbar.propTypes = {
+Header.propTypes = {
   drawerWidth: PropTypes.number,
 };
