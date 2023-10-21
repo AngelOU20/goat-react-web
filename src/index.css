@@ -96,3 +96,18 @@ a {
 .input__search:focus {
   outline: none;
 }
+
+/* Search personal */
+.container__search-personal {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+
+  width: 380px;
+  height: 42px;
+  flex-shrink: 0;
+
+  border-radius: 4px;
+  border: 1px solid #e6e6e6;
+  background: #fafafa;
+}
