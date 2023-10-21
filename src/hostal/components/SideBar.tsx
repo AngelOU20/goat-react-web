@@ -14,7 +14,7 @@ import {
   Settings,
   Logout,
 } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 interface Props {
   drawerWidth?: number;
@@ -53,34 +53,38 @@ export const SideBar: React.FC<Props> = ({ drawerWidth = 240 }) => {
         sx={{ color: 'white' }}
       >
         <List>
-          <Link to="/">
-            <ListItem>
-              <ListItemButton className="btn__list__item active">
-                <ListItemIcon>
-                  <Dashboard className="icon__item" />
-                </ListItemIcon>
-                <ListItemText primary="Dashboard" />
-              </ListItemButton>
-            </ListItem>
-          </Link>
+          <ListItem>
+            <ListItemButton
+              component={NavLink}
+              to="/"
+              className="btn__list__item"
+            >
+              <ListItemIcon>
+                <Dashboard className="icon__item" />
+              </ListItemIcon>
+              <ListItemText primary="Dashboard" />
+            </ListItemButton>
+          </ListItem>
 
-          <Link to="/personal">
-            <ListItem>
-              <ListItemButton className="btn__list__item">
-                <ListItemIcon>
-                  <Person className="icon__item" />
-                </ListItemIcon>
-                <ListItemText primary="Personal" />
-              </ListItemButton>
-            </ListItem>
-          </Link>
+          <ListItem>
+            <ListItemButton
+              component={NavLink}
+              to="/personal"
+              className="btn__list__item"
+            >
+              <ListItemIcon>
+                <Person className="icon__item" />
+              </ListItemIcon>
+              <ListItemText primary="Personal" />
+            </ListItemButton>
+          </ListItem>
 
           <ListItem>
             <ListItemButton className="btn__list__item">
               <ListItemIcon>
                 <Summarize className="icon__item" />
               </ListItemIcon>
-              <ListItemText primary="Habiaciones" />
+              <ListItemText primary="Habitaciones" />
             </ListItemButton>
           </ListItem>
         </List>
