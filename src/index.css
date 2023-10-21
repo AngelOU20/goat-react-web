@@ -37,14 +37,12 @@ a {
 .icon__item {
   color: #fff;
   font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px;
 }
 
 .active {
   background-color: #f97878 !important;
   color: #4c4c4c !important;
+  border-radius: 5px !important;
 }
 
 .active .icon__item {
@@ -54,7 +52,7 @@ a {
 .active:hover,
 .active:hover .icon__item {
   color: #4c4c4c !important;
-  /* transition: all 300ms; */
+  transition: all 300ms;
 }
 
 /* Search */
