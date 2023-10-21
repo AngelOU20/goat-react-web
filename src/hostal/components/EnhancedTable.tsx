@@ -1,138 +1,45 @@
-import { Search } from '@mui/icons-material';
-import { Button, Grid } from '@mui/material';
-import Box from '@mui/material/Box';
+import { Delete, Edit, Search } from '@mui/icons-material';
 import {
-  DataGrid,
-  type GridColDef,
-  type GridValueGetterParams,
-} from '@mui/x-data-grid';
+  Button,
+  Grid,
+  IconButton,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from '@mui/material';
 
-const columns: GridColDef[] = [
-  { field: 'id', headerName: 'ID', width: 90 },
-  {
-    field: 'firstName',
-    headerName: 'First name',
-    width: 150,
-    editable: false,
-  },
-  {
-    field: 'lastName',
-    headerName: 'Last name',
-    width: 150,
-    editable: false,
-  },
-  {
-    field: 'phoneNumber',
-    headerName: 'Phone number',
-    width: 150,
-    editable: false,
-  },
-  {
-    field: 'fullName',
-    headerName: 'Full name',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
-    width: 160,
-    valueGetter: (params: GridValueGetterParams) =>
-      `${params.row.firstName !== null ? params.row.firstName : ''}  
-      ${params.row.lastName !== null ? params.row.lastName : ''}`,
-  },
-  {
-    field: 'age',
-    headerName: 'Age',
-    type: 'number',
-    width: 110,
-    editable: false,
-  },
-  {
-    field: 'email',
-    headerName: 'Email',
-    width: 210,
-    editable: false,
-  },
-];
+function createData(
+  nameComplete: string,
+  status: string,
+  phoneNumber: string,
+  email: string
+): {
+  nameComplete: string;
+  status: string;
+  phoneNumber: string;
+  email: string;
+} {
+  return {
+    nameComplete,
+    status,
+    phoneNumber,
+    email,
+  };
+}
 
 const rows = [
-  {
-    id: 1,
-    lastName: 'Snow',
-    firstName: 'Jon',
-    age: 35,
-    phoneNumber: '+51 949922073',
-    email: 'Snow@gmail.com',
-  },
-  {
-    id: 2,
-    lastName: 'Lannister',
-    firstName: 'Cersei',
-    age: 42,
-    phoneNumber: '+51 949922073',
-    email: 'Lannister@gmail.com',
-  },
-  {
-    id: 3,
-    lastName: 'Lannister',
-    firstName: 'Jaime',
-    age: 45,
-    phoneNumber: '+51 949922073',
-    email: 'Lannister@gmail.com',
-  },
-  {
-    id: 4,
-    lastName: 'Stark',
-    firstName: 'Arya',
-    age: 16,
-    phoneNumber: '+51 949922073',
-    email: 'Stark@gmail.com',
-  },
-  {
-    id: 5,
-    lastName: 'Targaryen',
-    firstName: 'Daenerys',
-    age: null,
-    phoneNumber: '+51 949922073',
-    email: 'Targaryen@gmail.com',
-  },
-  {
-    id: 6,
-    lastName: 'Melisandre',
-    firstName: null,
-    age: 150,
-    phoneNumber: '+51 949922073',
-    email: 'Melisandre@gmail.com',
-  },
-  {
-    id: 7,
-    lastName: 'Clifford',
-    firstName: 'Ferrara',
-    age: 44,
-    phoneNumber: '+51 949922073',
-    email: 'Clifford@gmail.com',
-  },
-  {
-    id: 8,
-    lastName: 'Frances',
-    firstName: 'Rossini',
-    age: 36,
-    phoneNumber: '+51 949922073',
-    email: 'Frances@gmail.com',
-  },
-  {
-    id: 9,
-    lastName: 'Roxie',
-    firstName: 'Harvey',
-    age: 65,
-    phoneNumber: '+51 949922073',
-    email: 'Roxie@gmail.com',
-  },
-  {
-    id: 10,
-    lastName: 'Maria',
-    firstName: 'Rojas',
-    age: 45,
-    phoneNumber: '+51 949922073',
-    email: 'Maria@gmail.com',
-  },
+  createData('Juan Pérez', 'Activo', '987-654-321', 'juanPe@gmail.com'),
+  createData('María Sánchez', 'Inactivo', '987-654-322', 'maria@gmail.com'),
+  createData('Carlos López', 'Activo', '987-654-323', 'carlos@gmail.com'),
+  createData('Laura Rodríguez', 'Activo', '987-654-324', 'laura@hotmail.com'),
+  createData('Andrés Fernández', 'Inactivo', '987-654-325', 'andres@gmail.com'),
+  createData('Ana Gómez', 'Activo', '987-654-326', 'ana@hotmail.com'),
+  createData('Javier Torres', 'Activo', '987-654-327', 'javier@hotmail.com'),
+  createData('Sofía Martínez', 'Inactivo', '987-654-328', 'sofi_m@gmail.com'),
 ];
 
 export default function EnhancedTable(): JSX.Element {
@@ -153,12 +60,19 @@ export default function EnhancedTable(): JSX.Element {
           gap="20px"
         >
           <h3>Total ({rows.length})</h3>
-          <Button variant="contained" sx={{ textTransform: 'capitalize' }}>
-            Agregar nuevo personal
+          <Button
+            variant="contained"
+            sx={{
+              fontSize: '16px',
+              textTransform: 'capitalize',
+              padding: '10px 20px',
+            }}
+          >
+            Agregar nuevo
           </Button>
         </Grid>
 
-        <Grid className="container__search">
+        <Grid className="container__search-personal">
           <Search className="icon__search" />
           <input
             type="text"
@@ -168,22 +82,50 @@ export default function EnhancedTable(): JSX.Element {
         </Grid>
       </Grid>
 
-      <Box sx={{ height: 'auto', width: '100%' }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: {
-                pageSize: 8,
-              },
-            },
-          }}
-          pageSizeOptions={[8]}
-          checkboxSelection
-          disableRowSelectionOnClick
-        />
-      </Box>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Nombre completo</TableCell>
+              <TableCell align="right">Estado</TableCell>
+              <TableCell align="right">Número de celular</TableCell>
+              <TableCell align="right">Email</TableCell>
+              <TableCell align="center" colSpan={2}>
+                Acciones
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow
+                key={row.nameComplete}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell
+                  component="th"
+                  scope="row"
+                  sx={{ fontWeight: '700' }}
+                >
+                  {row.nameComplete}
+                </TableCell>
+                <TableCell align="right">{row.status}</TableCell>
+                <TableCell align="right">+51 {row.phoneNumber}</TableCell>
+                <TableCell align="right">{row.email}</TableCell>
+                <TableCell align="center">
+                  <IconButton>
+                    <Edit />
+                  </IconButton>
+                </TableCell>
+                <TableCell align="center">
+                  <IconButton>
+                    <Delete />
+                  </IconButton>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </>
   );
 }
