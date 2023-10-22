@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { HostalPage } from '../hostal/pages/HostalPage';
-import { PersonalPage } from '../hostal/pages/PersonalPage';
+import { PersonalPage } from '../staff/pages/PersonalPage';
 
 export const AppRouter: React.FC = () => {
   return (
