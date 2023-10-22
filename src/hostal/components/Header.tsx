@@ -36,7 +36,8 @@ export const Header: React.FC<Props> = ({ drawerWidth = 240 }) => {
         height: { sm: '100px' },
         width: { sm: `calc(100% - ${drawerWidth}px)` },
         ml: { sm: `${drawerWidth}px` },
-        zIndex: 1000,
+        zIndex: 100,
+        backgroundColor: '#ffffff',
       }}
     >
       <Container maxWidth="xl">
