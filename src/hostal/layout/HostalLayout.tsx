@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Box, Toolbar } from '@mui/material';
+import { Box } from '@mui/material';
 import { Header, SideBar } from '../components';
 
 interface Props {
@@ -15,7 +15,7 @@ export const HostalLayout: React.FC<Props> = ({ children }) => {
       <SideBar drawerWidth={drawerWidth} />
 
       <Box component="main" sx={{ flexGrow: 1, p: 3, marginTop: '100px' }}>
-        <Toolbar />
+        {/* <Toolbar /> */}
         {children}
       </Box>
     </Box>
