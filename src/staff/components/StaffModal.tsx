@@ -10,8 +10,6 @@ import {
   Modal,
 } from '@mui/material';
 
-import { useUiPersonalStore } from '../../hooks/useUiPersonalStore';
-
 import {
   Close,
   ContactPhone,
@@ -20,6 +18,8 @@ import {
   Visibility,
   VisibilityOff,
 } from '@mui/icons-material';
+
+import { useUiStaffStore } from '../../hooks';
 
 const style = {
   position: 'relative',
@@ -34,9 +34,9 @@ const style = {
   p: 5,
 };
 
-export const PersonalModal: React.FC = () => {
+export const StaffModal: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { isPersonalModalOpen, closePersonalModal } = useUiPersonalStore();
+  const { isStaffModalOpen, closeStaffModal } = useUiStaffStore();
 
   const handleClickShowPassword = (): void => {
     setShowPassword((show) => !show);
@@ -49,13 +49,13 @@ export const PersonalModal: React.FC = () => {
   };
 
   const handleClose = (): void => {
-    closePersonalModal();
+    closeStaffModal();
   };
 
   return (
     <>
       <Modal
-        open={isPersonalModalOpen}
+        open={isStaffModalOpen}
         onClose={handleClose}
         closeAfterTransition
         slots={{ backdrop: Backdrop }}

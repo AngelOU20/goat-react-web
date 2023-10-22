@@ -1,8 +1,8 @@
-import { EnhancedTable, PersonalModal } from '../components';
+import { EnhancedTable, StaffModal } from '../components';
 import { HostalLayout } from '../../hostal/layout/HostalLayout';
 import { Container, Typography } from '@mui/material';
 
-export const PersonalPage: React.FC = () => {
+export const StaffPage: React.FC = () => {
   return (
     <HostalLayout>
       <Container>
@@ -17,7 +17,7 @@ export const PersonalPage: React.FC = () => {
           Administrar Personal
         </Typography>
         <EnhancedTable />
-        <PersonalModal />
+        <StaffModal />
       </Container>
     </HostalLayout>
   );
