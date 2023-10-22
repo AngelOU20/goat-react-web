@@ -1,9 +1,9 @@
-import { Delete, Edit, Search } from '@mui/icons-material';
+import { Add, Delete, Edit, Search } from '@mui/icons-material';
 import {
   Button,
   Grid,
   IconButton,
-  Paper,
+  // Paper,
   Table,
   TableBody,
   TableCell,
@@ -11,6 +11,7 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
+import { useUiPersonalStore } from '../../hooks/useUiPersonalStore';
 
 function createData(
   nameComplete: string,
@@ -38,18 +39,18 @@ const rows = [
   createData('Laura Rodríguez', 'Activo', '987-654-324', 'laura@hotmail.com'),
   createData('Andrés Fernández', 'Inactivo', '987-654-325', 'andres@gmail.com'),
   createData('Ana Gómez', 'Activo', '987-654-326', 'ana@hotmail.com'),
-  createData('Javier Torres', 'Activo', '987-654-327', 'javier@hotmail.com'),
-  createData('Sofía Martínez', 'Inactivo', '987-654-328', 'sofi_m@gmail.com'),
 ];
 
-export default function EnhancedTable(): JSX.Element {
+export const EnhancedTable: React.FC = () => {
+  const { openPersonalModal } = useUiPersonalStore();
+
   return (
     <>
       <Grid
         container
         display="flex"
         justifyContent="space-between"
-        margin="20px 0"
+        margin="30px 0"
       >
         <Grid
           item
@@ -61,11 +62,14 @@ export default function EnhancedTable(): JSX.Element {
         >
           <h3>Total ({rows.length})</h3>
           <Button
+            startIcon={<Add />}
+            onClick={openPersonalModal}
             variant="contained"
+            color="primary"
             sx={{
               fontSize: '16px',
               textTransform: 'capitalize',
-              padding: '10px 20px',
+              padding: '8px 20px',
             }}
           >
             Agregar nuevo
@@ -82,7 +86,7 @@ export default function EnhancedTable(): JSX.Element {
         </Grid>
       </Grid>
 
-      <TableContainer component={Paper}>
+      <TableContainer>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
@@ -128,4 +132,4 @@ export default function EnhancedTable(): JSX.Element {
       </TableContainer>
     </>
   );
-}
+};
