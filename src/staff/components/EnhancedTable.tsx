@@ -11,7 +11,7 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
-import { useUiPersonalStore } from '../../hooks/useUiPersonalStore';
+import { useUiStaffStore } from '../../hooks';
 
 function createData(
   nameComplete: string,
@@ -42,7 +42,7 @@ const rows = [
 ];
 
 export const EnhancedTable: React.FC = () => {
-  const { openPersonalModal } = useUiPersonalStore();
+  const { openStaffModal } = useUiStaffStore();
 
   return (
     <>
@@ -63,7 +63,7 @@ export const EnhancedTable: React.FC = () => {
           <h3>Total ({rows.length})</h3>
           <Button
             startIcon={<Add />}
-            onClick={openPersonalModal}
+            onClick={openStaffModal}
             variant="contained"
             color="primary"
             sx={{
