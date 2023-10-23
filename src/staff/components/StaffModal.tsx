@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Backdrop,
   Box,
@@ -9,7 +9,6 @@ import {
   Typography,
   Modal,
 } from '@mui/material';
-
 import {
   Close,
   ContactPhone,
@@ -18,8 +17,8 @@ import {
   Visibility,
   VisibilityOff,
 } from '@mui/icons-material';
-
-import { useUiStaffStore } from '../../hooks';
+import { useForm, useStaffStore, useUiStaffStore } from '../../hooks';
+import { type Employee } from '../../store/staff/staffSlice';
 
 const style = {
   position: 'relative',
@@ -34,9 +33,27 @@ const style = {
   p: 5,
 };
 
+const initialState = {
+  _id: 0,
+  nameComplete: '',
+  user: '',
+  status: '',
+  email: '',
+  number: '',
+  password: '',
+};
+
 export const StaffModal: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
+
+  const { startSavingEmployee, clearEmployeeActive, activeEmployee } =
+    useStaffStore();
   const { isStaffModalOpen, closeStaffModal } = useUiStaffStore();
+
+  const { formState, setFormState, onInputChange, onResetForm } =
+    useForm<Employee>(initialState);
+
+  const { nameComplete, user, email, number, password } = formState;
 
   const handleClickShowPassword = (): void => {
     setShowPassword((show) => !show);
@@ -48,8 +65,25 @@ export const StaffModal: React.FC = () => {
     event.preventDefault();
   };
 
+  useEffect(() => {
+    if (activeEmployee !== null) {
+      setFormState({ ...activeEmployee });
+    } else {
+      onResetForm();
+    }
+  }, [activeEmployee]);
+
   const handleClose = (): void => {
     closeStaffModal();
+    clearEmployeeActive();
+  };
+
+  const onSubmit = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    event.preventDefault();
+    void startSavingEmployee(formState);
+
+    handleClose();
+    onResetForm();
   };
 
   return (
@@ -85,12 +119,21 @@ export const StaffModal: React.FC = () => {
               marginBottom: '30px',
             }}
           >
-            Nuevo Personal
+            {activeEmployee === null ? 'Nuevo Personal' : 'Editar Personal'}
           </Typography>
 
-          <Box component="div" display="flex" flexDirection="column" gap="10px">
+          <Box
+            component="form"
+            onSubmit={onSubmit}
+            display="flex"
+            flexDirection="column"
+            gap="10px"
+          >
             <TextField
               label="Nombre completo"
+              name="nameComplete"
+              value={nameComplete}
+              onChange={onInputChange}
               sx={{ m: 1, width: '350px' }}
               InputProps={{
                 endAdornment: (
@@ -103,6 +146,9 @@ export const StaffModal: React.FC = () => {
 
             <TextField
               label="Usuario"
+              name="user"
+              value={user}
+              onChange={onInputChange}
               sx={{ m: 1, width: '350px' }}
               InputProps={{
                 endAdornment: (
@@ -115,7 +161,11 @@ export const StaffModal: React.FC = () => {
 
             <TextField
               label="Email"
+              name="email"
+              value={email}
+              onChange={onInputChange}
               sx={{ m: 1, width: '350px' }}
+              type="email"
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
@@ -127,6 +177,9 @@ export const StaffModal: React.FC = () => {
 
             <TextField
               label="Número"
+              name="number"
+              value={number}
+              onChange={onInputChange}
               sx={{ m: 1, width: '350px' }}
               InputProps={{
                 endAdornment: (
@@ -139,7 +192,10 @@ export const StaffModal: React.FC = () => {
 
             <TextField
               label="Contraseña"
-              variant="outlined"
+              autoComplete="off"
+              name="password"
+              value={password}
+              onChange={onInputChange}
               sx={{ m: 1, width: '350px' }}
               type={showPassword ? 'text' : 'password'}
               InputProps={{
@@ -160,6 +216,7 @@ export const StaffModal: React.FC = () => {
 
             <Button
               variant="contained"
+              type="submit"
               sx={{
                 fontSize: '16px',
                 fontWeight: '600',
@@ -170,7 +227,7 @@ export const StaffModal: React.FC = () => {
                 m: 1,
               }}
             >
-              Agregar nuevo personal
+              {activeEmployee === null ? 'Agregar nuevo personal' : 'Guardar'}
             </Button>
           </Box>
         </Box>
