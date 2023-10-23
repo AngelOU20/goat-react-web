@@ -13,7 +13,6 @@ export interface Employee {
 export interface staffState {
   isSaving: boolean;
   staff: Employee[];
-  // eslint-disable-next-line @typescript-eslint/ban-types
   activeEmployee: Employee | null;
 }
 
@@ -81,6 +80,14 @@ export const staffSlice = createSlice({
         return employee;
       });
     },
+    onDeleteEmployeeById: (state) => {
+      if (state.activeEmployee !== null) {
+        state.staff = state.staff.filter(
+          (employee) => employee._id !== state.activeEmployee?._id
+        );
+        state.activeEmployee = null;
+      }
+    },
   },
 });
 
@@ -90,4 +97,5 @@ export const {
   onClearEmployeeActive,
   onAddNewEmployee,
   onUpdateEmployee,
+  onDeleteEmployeeById,
 } = staffSlice.actions;

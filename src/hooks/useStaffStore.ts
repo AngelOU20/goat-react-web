@@ -6,6 +6,7 @@ import {
   onClearEmployeeActive,
   onSetActiveEmployee,
   onUpdateEmployee,
+  onDeleteEmployeeById,
 } from '../store/staff/staffSlice';
 
 interface Props {
@@ -14,6 +15,7 @@ interface Props {
   setActiveEmployee: (employee: Employee | null) => void;
   startSavingEmployee: (employee: Employee | null) => Promise<void>;
   clearEmployeeActive: () => void;
+  startDeletingEmployee: () => void;
 }
 
 export const useStaffStore = (): Props => {
@@ -31,8 +33,10 @@ export const useStaffStore = (): Props => {
     employee: Employee | null
   ): Promise<void> => {
     if (employee !== null && employee._id !== 0) {
+      // Actualizando
       dispatch(onUpdateEmployee({ ...employee }));
     } else {
+      // Creando
       dispatch(
         onAddNewEmployee({
           ...employee,
@@ -47,6 +51,10 @@ export const useStaffStore = (): Props => {
     dispatch(onClearEmployeeActive());
   };
 
+  const startDeletingEmployee = (): void => {
+    dispatch(onDeleteEmployeeById());
+  };
+
   return {
     // Properties
     activeEmployee,
@@ -56,5 +64,6 @@ export const useStaffStore = (): Props => {
     setActiveEmployee,
     startSavingEmployee,
     clearEmployeeActive,
+    startDeletingEmployee,
   };
 };

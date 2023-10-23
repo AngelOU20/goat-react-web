@@ -22,7 +22,7 @@ export const StaffTableItem: React.FC<Props> = ({
   email,
   password,
 }) => {
-  const { setActiveEmployee } = useStaffStore();
+  const { setActiveEmployee, startDeletingEmployee } = useStaffStore();
   const { openStaffModal } = useUiStaffStore();
 
   const onActiveEmployee = (): void => {
@@ -37,6 +37,20 @@ export const StaffTableItem: React.FC<Props> = ({
     });
     openStaffModal();
   };
+
+  const onDelete = (): void => {
+    setActiveEmployee({
+      _id,
+      status,
+      user,
+      nameComplete,
+      number,
+      email,
+      password,
+    });
+    startDeletingEmployee();
+  };
+
   return (
     <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
       <TableCell component="th" scope="row" sx={{ fontWeight: '700' }}>
@@ -51,7 +65,7 @@ export const StaffTableItem: React.FC<Props> = ({
         </IconButton>
       </TableCell>
       <TableCell align="center">
-        <IconButton>
+        <IconButton onClick={onDelete}>
           <Delete />
         </IconButton>
       </TableCell>
