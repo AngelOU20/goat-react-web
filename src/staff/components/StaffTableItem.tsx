@@ -1,0 +1,70 @@
+import PropTypes from 'prop-types';
+import { Delete, Edit } from '@mui/icons-material';
+import { IconButton, TableCell, TableRow } from '@mui/material';
+import { useStaffStore, useUiStaffStore } from '../../hooks';
+
+interface Props {
+  _id: number;
+  status: string;
+  user?: string;
+  nameComplete: string;
+  number: string;
+  email: string;
+  password: string;
+}
+
+export const StaffTableItem: React.FC<Props> = ({
+  _id,
+  status,
+  user,
+  nameComplete,
+  number,
+  email,
+  password,
+}) => {
+  const { setActiveEmployee } = useStaffStore();
+  const { openStaffModal } = useUiStaffStore();
+
+  const onActiveEmployee = (): void => {
+    setActiveEmployee({
+      _id,
+      status,
+      user,
+      nameComplete,
+      number,
+      email,
+      password,
+    });
+    openStaffModal();
+  };
+  return (
+    <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+      <TableCell component="th" scope="row" sx={{ fontWeight: '700' }}>
+        {nameComplete}
+      </TableCell>
+      <TableCell align="right">{status}</TableCell>
+      <TableCell align="right">+51 {number}</TableCell>
+      <TableCell align="right">{email}</TableCell>
+      <TableCell align="center">
+        <IconButton onClick={onActiveEmployee}>
+          <Edit />
+        </IconButton>
+      </TableCell>
+      <TableCell align="center">
+        <IconButton>
+          <Delete />
+        </IconButton>
+      </TableCell>
+    </TableRow>
+  );
+};
+
+StaffTableItem.propTypes = {
+  _id: PropTypes.number.isRequired,
+  status: PropTypes.string.isRequired,
+  user: PropTypes.string,
+  nameComplete: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+};
