@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { uiStaffSlice } from './ui/uiStaffSlice';
+import { staffSlice } from './staff/staffSlice';
 
 export const store = configureStore({
   reducer: {
     uiStaff: uiStaffSlice.reducer,
+    staff: staffSlice.reducer,
   },
 });
 
