@@ -1,4 +1,4 @@
-import { EnhancedTable, StaffModal } from '../components';
+import { StaffTable, StaffModal } from '../components';
 import { HostalLayout } from '../../hostal/layout/HostalLayout';
 import { Container, Typography } from '@mui/material';
 
@@ -16,7 +16,7 @@ export const StaffPage: React.FC = () => {
         >
           Administrar Personal
         </Typography>
-        <EnhancedTable />
+        <StaffTable />
         <StaffModal />
       </Container>
     </HostalLayout>
