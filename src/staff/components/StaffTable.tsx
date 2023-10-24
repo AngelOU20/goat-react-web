@@ -7,14 +7,35 @@ import {
   TableCell,
   TableContainer,
   TableHead,
+  TablePagination,
   TableRow,
 } from '@mui/material';
 import { useStaffStore, useUiStaffStore } from '../../hooks';
 import { StaffTableItem } from './';
+import { useState } from 'react';
 
 export const StaffTable: React.FC = () => {
   const { staff } = useStaffStore();
   const { openStaffModal } = useUiStaffStore();
+
+  const [page, setPage] = useState(0); // Estado para la página actual
+  const [rowsPerPage, setRowsPerPage] = useState(5); // Estado para la cantidad de filas por página
+
+  const visibleEmployees = staff.slice(
+    page * rowsPerPage,
+    page * rowsPerPage + rowsPerPage
+  );
+
+  const handleChangePage = (_event: unknown, newPage: number): void => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
 
   return (
     <>
@@ -72,12 +93,21 @@ export const StaffTable: React.FC = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {staff.map((employee) => (
+            {visibleEmployees.map((employee) => (
               <StaffTableItem key={employee._id} {...employee} />
             ))}
           </TableBody>
         </Table>
       </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+        component="div"
+        count={staff.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
     </>
   );
 };
