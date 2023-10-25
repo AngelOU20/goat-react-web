@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material';
-import { red } from '@mui/material/colors';
+import { grey, red } from '@mui/material/colors';
 
 export const colorTheme = createTheme({
   palette: {
@@ -8,6 +8,9 @@ export const colorTheme = createTheme({
     },
     secondary: {
       main: '#F97878',
+    },
+    info: {
+      main: grey[100],
     },
     error: {
       main: red.A400,
