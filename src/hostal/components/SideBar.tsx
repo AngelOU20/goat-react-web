@@ -80,7 +80,11 @@ export const SideBar: React.FC<Props> = ({ drawerWidth = 240 }) => {
           </ListItem>
 
           <ListItem>
-            <ListItemButton className="btn__list__item">
+            <ListItemButton
+              component={NavLink}
+              to="/habitaciones"
+              className="btn__list__item"
+            >
               <ListItemIcon>
                 <Summarize className="icon__item" />
               </ListItemIcon>
