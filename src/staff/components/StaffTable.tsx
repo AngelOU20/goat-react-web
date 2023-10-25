@@ -79,8 +79,8 @@ export const StaffTable: React.FC = () => {
         </Grid>
       </Grid>
 
-      <TableContainer>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <TableContainer sx={{ maxHeight: 500 }}>
+        <Table stickyHeader sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>Nombre completo</TableCell>
