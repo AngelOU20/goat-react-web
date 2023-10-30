@@ -24,7 +24,7 @@ a {
   -webkit-text-fill-color: transparent;
 
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 800;
   line-height: 32px;
 
   margin: 10px;
@@ -44,16 +44,11 @@ a {
   background-color: #f97878 !important;
   color: #4c4c4c !important;
   border-radius: 5px !important;
+  transition: all 0.3s ease-out;
 }
 
 .active .icon__item {
   color: #4c4c4c;
-}
-
-.active:hover,
-.active:hover .icon__item {
-  color: #4c4c4c !important;
-  transition: all 300ms;
 }
 
 /* Search */
