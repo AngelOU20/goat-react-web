@@ -106,7 +106,7 @@ export const StaffModal: React.FC = () => {
           justifyContent="center"
           sx={style}
         >
-          <IconButton className="close-icon" onClick={handleClose}>
+          <IconButton className="close staff-modal" onClick={handleClose}>
             <Close />
           </IconButton>
 
