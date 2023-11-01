@@ -8,7 +8,8 @@ interface FormState<T> {
   onResetForm: () => void;
 }
 
-export function useForm<T>(initialForm: T): FormState<T> {
+// export function useForm<T>(initialForm: T): FormState<T> {
+export const useForm = <T>(initialForm: T): FormState<T> => {
   const [formState, setFormState] = useState<T>(initialForm);
 
   const onInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -30,4 +31,4 @@ export function useForm<T>(initialForm: T): FormState<T> {
     onInputChange,
     onResetForm,
   };
-}
+};
