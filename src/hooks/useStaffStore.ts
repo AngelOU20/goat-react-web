@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { type RootState } from '../store';
+import { type Employee } from '../staff/interfaces/interfaces';
 import {
-  type Employee,
   onAddNewEmployee,
   onClearEmployeeActive,
   onSetActiveEmployee,
@@ -13,7 +13,7 @@ interface Props {
   activeEmployee: Employee | null;
   staff: Employee[];
   setActiveEmployee: (employee: Employee | null) => void;
-  startSavingEmployee: (employee: Employee | null) => Promise<void>;
+  startSavingEmployee: (employee: Employee) => Promise<void>;
   clearEmployeeActive: () => void;
   startDeletingEmployee: () => void;
 }
@@ -29,9 +29,7 @@ export const useStaffStore = (): Props => {
     dispatch(onSetActiveEmployee(employee));
   };
 
-  const startSavingEmployee = async (
-    employee: Employee | null
-  ): Promise<void> => {
+  const startSavingEmployee = async (employee: Employee): Promise<void> => {
     if (employee !== null && employee._id !== 0) {
       // Actualizando
       dispatch(onUpdateEmployee({ ...employee }));
