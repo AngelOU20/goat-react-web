@@ -1,14 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-export interface Employee {
-  _id: number;
-  nameComplete: string;
-  user: string | undefined;
-  status: string;
-  number: string;
-  email: string;
-  password: string;
-}
+import { type Employee } from '../../staff/interfaces/interfaces';
 
 export interface staffState {
   isSaving: boolean;
