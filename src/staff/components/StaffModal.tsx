@@ -18,7 +18,7 @@ import {
   VisibilityOff,
 } from '@mui/icons-material';
 import { useForm, useStaffStore, useUiStaffStore } from '../../hooks';
-import { type Employee } from '../../store/staff/staffSlice';
+import { type Employee } from '../interfaces/interfaces';
 
 const style = {
   position: 'relative',
