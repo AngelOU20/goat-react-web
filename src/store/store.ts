@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { uiStaffSlice } from './ui/uiStaffSlice';
+import { uiStaffSlice, uiRoomSlice } from './ui';
 import { staffSlice } from './staff/staffSlice';
 
 export const store = configureStore({
   reducer: {
     uiStaff: uiStaffSlice.reducer,
+    uiRoom: uiRoomSlice.reducer,
     staff: staffSlice.reducer,
   },
 });
