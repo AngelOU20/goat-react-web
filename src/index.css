@@ -109,9 +109,16 @@ a {
 }
 
 /* Modal */
-
-.close-icon {
+.close {
   position: absolute;
+}
+
+.staff-modal {
   left: 210px;
   bottom: 40px;
+}
+
+.task-modal {
+  left: 210px;
+  bottom: 30px;
 }
