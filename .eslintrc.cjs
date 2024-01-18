@@ -40,5 +40,6 @@ module.exports = {
     '@typescript-eslint/member-delimiter-style': 'off',
     'import/no-absolute-path': 'off',
     '@typescript-eslint/indent': 'off',
+    'multiline-ternary': 'off',
   },
 };
