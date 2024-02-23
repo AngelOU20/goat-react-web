@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Notifications, Search } from '@mui/icons-material';
+import { Notifications } from '@mui/icons-material';
 
 import {
   Avatar,
@@ -42,21 +42,7 @@ export const Header: React.FC<Props> = ({ drawerWidth = 240 }) => {
     >
       <Container maxWidth="xl">
         <Toolbar>
-          <Grid
-            container
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-          >
-            <div className="container__search">
-              <Search className="icon__search" />
-              <input
-                type="text"
-                className="input__search"
-                placeholder="Buscar"
-              />
-            </div>
-
+          <Grid container direction="row" justifyContent="end" alignItems="center">
             <Grid
               item
               xs={3}
