@@ -9,6 +9,9 @@ export const colorTheme = createTheme({
     secondary: {
       main: '#F97878',
     },
+    success: {
+      main: '#81c784',
+    },
     info: {
       main: grey[100],
     },
