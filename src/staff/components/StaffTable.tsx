@@ -10,7 +10,7 @@ import {
   TablePagination,
   TableRow,
 } from '@mui/material';
-import { useStaffStore, useUiStaffStore } from '../../hooks';
+import { useStaffStore, useUiStaffStore } from '../hooks';
 import { StaffTableItem } from './';
 import { useState } from 'react';
 
@@ -30,21 +30,14 @@ export const StaffTable: React.FC = () => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
 
   return (
     <>
-      <Grid
-        container
-        display="flex"
-        justifyContent="space-between"
-        margin="30px 0"
-      >
+      <Grid container display="flex" justifyContent="space-between" margin="30px 0">
         <Grid
           item
           xs={4}
@@ -71,11 +64,7 @@ export const StaffTable: React.FC = () => {
 
         <Grid className="container__search-personal">
           <Search className="icon__search" />
-          <input
-            type="text"
-            className="input__search"
-            placeholder="Buscar personal"
-          />
+          <input type="text" className="input__search" placeholder="Buscar personal" />
         </Grid>
       </Grid>
 

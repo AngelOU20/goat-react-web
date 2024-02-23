@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { type Employee } from '../interfaces/interfaces';
 import {
   Backdrop,
   Box,
@@ -17,8 +18,8 @@ import {
   Visibility,
   VisibilityOff,
 } from '@mui/icons-material';
-import { useForm, useStaffStore, useUiStaffStore } from '../../hooks';
-import { type Employee } from '../interfaces/interfaces';
+import { useForm, usePasswordToggle } from '../../hooks';
+import { useStaffStore, useUiStaffStore } from '../hooks';
 
 const style = {
   position: 'relative',
@@ -37,17 +38,14 @@ const initialState = {
   _id: 0,
   nameComplete: '',
   user: '',
-  status: '',
+  isActive: true,
   email: '',
   number: '',
   password: '',
 };
 
 export const StaffModal: React.FC = () => {
-  const [showPassword, setShowPassword] = useState(false);
-
-  const { startSavingEmployee, clearEmployeeActive, activeEmployee } =
-    useStaffStore();
+  const { startSavingEmployee, clearEmployeeActive, activeEmployee } = useStaffStore();
   const { isStaffModalOpen, closeStaffModal } = useUiStaffStore();
 
   const { formState, setFormState, onInputChange, onResetForm } =
@@ -55,15 +53,8 @@ export const StaffModal: React.FC = () => {
 
   const { nameComplete, user, email, number, password } = formState;
 
-  const handleClickShowPassword = (): void => {
-    setShowPassword((show) => !show);
-  };
-
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ): void => {
-    event.preventDefault();
-  };
+  const { showPassword, handleClickShowPassword, handleMouseDownPassword } =
+    usePasswordToggle();
 
   useEffect(() => {
     if (activeEmployee !== null) {

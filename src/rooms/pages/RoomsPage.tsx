@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import { HostalLayout } from '../../hostal/layout/HostalLayout';
+import { HostalLayout } from '../../layout/HostalLayout';
 import { RoomsTable, TasksModal } from '../components';
 import { AssignStaffModal } from '../components/AssignStaffModal';
 
