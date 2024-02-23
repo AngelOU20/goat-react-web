@@ -1,31 +1,67 @@
-import { Link as RouterLink } from 'react-router-dom';
-import { Button, Grid, Link, TextField, Typography } from '@mui/material';
-import { Google } from '@mui/icons-material';
 import { AuthLayout } from '../layout/AuthLayout';
+import { useForm, usePasswordToggle } from '../../hooks';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Button, Grid, IconButton, InputAdornment, TextField } from '@mui/material';
+import { useAuthStore } from '../../hooks/useAuthStore';
+
+const initialState = {
+  email: '',
+  password: '',
+};
 
 export const LoginPage: React.FC = () => {
+  const { formState, onInputChange } = useForm(initialState);
+  const { showPassword, handleClickShowPassword, handleMouseDownPassword } =
+    usePasswordToggle();
+  const { status, startLogin } = useAuthStore();
+
+  const onSubmit = (): void => {
+    startLogin();
+    console.log(status);
+    console.log('Inicio de sesión exitoso');
+  };
+
   return (
-    <AuthLayout title={'Login'}>
-      <form>
+    <AuthLayout title={'Inicio de Sesión'}>
+      <form onSubmit={onSubmit}>
         <Grid container>
           <Grid item xs={12} md={12} sx={{ mt: 2 }}>
             <TextField
               label="Correo"
-              type="email"
-              placeholder="correo@google.com"
+              autoComplete="off"
               fullWidth
+              placeholder="correo@google.com"
+              type="email"
               name="email"
-            ></TextField>
+              value={formState.email}
+              onChange={onInputChange}
+            />
           </Grid>
 
           <Grid item xs={12} md={12} sx={{ mt: 2 }}>
             <TextField
               label="Contraseña"
-              type="password"
-              placeholder="Contraseña"
+              autoComplete="off"
               fullWidth
               name="password"
-            ></TextField>
+              value={formState.password}
+              onChange={onInputChange}
+              type={showPassword ? 'text' : 'password'}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
           </Grid>
 
           <Grid container spacing={2} sx={{ mb: 2, mt: 1 }}>
@@ -34,23 +70,10 @@ export const LoginPage: React.FC = () => {
               <Alert severity="error">{errorMessage}</Alert>
             </Grid> */}
 
-            <Grid item xs={12} md={6} sx={{ mt: 1 }}>
+            <Grid item xs={12} md={12} sx={{ mt: 1 }}>
               <Button type="submit" variant="contained" fullWidth>
-                Login
+                Iniciar Sesión
               </Button>
-            </Grid>
-
-            <Grid item xs={12} md={6} sx={{ mt: 1 }}>
-              <Button variant="contained" fullWidth>
-                <Google />
-                <Typography sx={{ ml: 1 }}>Google</Typography>
-              </Button>
-            </Grid>
-
-            <Grid container direction="row" justifyContent="end" sx={{ mt: 2 }}>
-              <Link component={RouterLink} color="inherit" to="/auth/register">
-                Crear una cuenta
-              </Link>
             </Grid>
           </Grid>
         </Grid>
