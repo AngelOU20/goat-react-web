@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { type RootState } from '../store';
-import { type Employee } from '../staff/interfaces/interfaces';
+import { type RootState } from '../../store';
+import { type Employee } from '../interfaces/interfaces';
 import {
   onAddNewEmployee,
   onClearEmployeeActive,
   onSetActiveEmployee,
   onUpdateEmployee,
   onDeleteEmployeeById,
-} from '../store/staff/staffSlice';
+} from '../../store/staff/staffSlice';
 
-interface Props {
+interface StaffStoreOptions {
   activeEmployee: Employee | null;
   staff: Employee[];
   setActiveEmployee: (employee: Employee | null) => void;
@@ -18,7 +18,7 @@ interface Props {
   startDeletingEmployee: () => void;
 }
 
-export const useStaffStore = (): Props => {
+export const useStaffStore = (): StaffStoreOptions => {
   const dispatch = useDispatch();
 
   const { staff, activeEmployee } = useSelector(
