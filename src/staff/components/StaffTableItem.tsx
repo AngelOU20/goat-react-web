@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import { Delete, Edit } from '@mui/icons-material';
 import { IconButton, TableCell, TableRow } from '@mui/material';
-import { useStaffStore, useUiStaffStore } from '../../hooks';
+import { useStaffStore, useUiStaffStore } from '../hooks';
 
 interface Props {
   _id: number;
-  status: string;
+  isActive: boolean;
   user?: string;
   nameComplete: string;
   number: string;
@@ -15,7 +15,7 @@ interface Props {
 
 export const StaffTableItem: React.FC<Props> = ({
   _id,
-  status,
+  isActive,
   user,
   nameComplete,
   number,
@@ -28,7 +28,7 @@ export const StaffTableItem: React.FC<Props> = ({
   const onActiveEmployee = (): void => {
     setActiveEmployee({
       _id,
-      status,
+      isActive,
       user,
       nameComplete,
       number,
@@ -41,7 +41,7 @@ export const StaffTableItem: React.FC<Props> = ({
   const onDelete = (): void => {
     setActiveEmployee({
       _id,
-      status,
+      isActive,
       user,
       nameComplete,
       number,
@@ -56,7 +56,7 @@ export const StaffTableItem: React.FC<Props> = ({
       <TableCell component="th" scope="row" sx={{ fontWeight: '700' }}>
         {nameComplete}
       </TableCell>
-      <TableCell align="right">{status}</TableCell>
+      <TableCell align="right">{isActive ? 'Activo' : 'Inactivo'}</TableCell>
       <TableCell align="right">+51 {number}</TableCell>
       <TableCell align="right">{email}</TableCell>
       <TableCell align="center">
@@ -75,7 +75,7 @@ export const StaffTableItem: React.FC<Props> = ({
 
 StaffTableItem.propTypes = {
   _id: PropTypes.number.isRequired,
-  status: PropTypes.string.isRequired,
+  isActive: PropTypes.bool.isRequired,
   user: PropTypes.string,
   nameComplete: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
