@@ -12,108 +12,7 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { useUiRoomStore } from '../../hooks/useUiRoomStore';
-
-const rooms = [
-  {
-    id: 104,
-    roomNumber: '104',
-    floor: 'Primer piso',
-    status: 'Abierto',
-    availability: 'Disponible',
-    observations: {},
-    tasks: {},
-  },
-  {
-    id: 108,
-    roomNumber: '108',
-    floor: 'Segundo piso',
-    status: 'Abierto',
-    availability: 'Disponible',
-    observations: {},
-    tasks: {},
-  },
-  {
-    id: 109,
-    roomNumber: '109',
-    floor: 'Tercer piso',
-    status: 'Cerrado',
-    availability: 'No disponible',
-    observations: {},
-    tasks: {},
-  },
-  {
-    id: 110,
-    roomNumber: '110',
-    floor: 'Tercer piso',
-    status: 'Abierto',
-    availability: 'Disponible',
-    observations: {},
-    tasks: {},
-  },
-  {
-    id: 111,
-    roomNumber: '111',
-    floor: 'Cuarto piso',
-    status: 'Cerrado',
-    availability: 'No disponible',
-    observations: {},
-    tasks: {},
-  },
-  {
-    id: 112,
-    roomNumber: '112',
-    floor: 'Cuarto piso',
-    status: 'Abierto',
-    availability: 'Disponible',
-    observations: {},
-    tasks: {},
-  },
-  {
-    id: 113,
-    roomNumber: '113',
-    floor: 'Quinto piso',
-    status: 'Abierto',
-    availability: 'Disponible',
-    observations: {},
-    tasks: {},
-  },
-  {
-    id: 114,
-    roomNumber: '114',
-    floor: 'Quinto piso',
-    status: 'Cerrado',
-    availability: 'No disponible',
-    observations: {},
-    tasks: {},
-  },
-  {
-    id: 115,
-    roomNumber: '115',
-    floor: 'Sexto piso',
-    status: 'Cerrado',
-    availability: 'No disponible',
-    observations: {},
-    tasks: {},
-  },
-  {
-    id: 116,
-    roomNumber: '116',
-    floor: 'Sexto piso',
-    status: 'Abierto',
-    availability: 'Disponible',
-    observations: {},
-    tasks: {},
-  },
-  {
-    id: 117,
-    roomNumber: '117',
-    floor: 'Séptimo piso',
-    status: 'Abierto',
-    availability: 'Disponible',
-    observations: {},
-    tasks: {},
-  },
-];
+import { roomsData as rooms } from '../../lib/rooms';
 
 export const RoomsTable: React.FC = () => {
   const { openTaskModal, openAssignPersonalModal } = useUiRoomStore();
@@ -121,30 +20,20 @@ export const RoomsTable: React.FC = () => {
   const [page, setPage] = useState(0); // Estado para la página actual
   const [rowsPerPage, setRowsPerPage] = useState(5); // Estado para la cantidad de filas por página
 
-  const visibleRooms = rooms.slice(
-    page * rowsPerPage,
-    page * rowsPerPage + rowsPerPage
-  );
+  const visibleRooms = rooms.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
   const handleChangePage = (_event: unknown, newPage: number): void => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
 
   return (
     <>
-      <Grid
-        container
-        display="flex"
-        justifyContent="space-between"
-        margin="30px 0"
-      >
+      <Grid container display="flex" justifyContent="space-between" margin="30px 0">
         <Grid
           item
           xs={4}
@@ -170,11 +59,7 @@ export const RoomsTable: React.FC = () => {
 
         <Grid className="container__search-personal">
           <Search className="icon__search" />
-          <input
-            type="text"
-            className="input__search"
-            placeholder="Buscar habitación"
-          />
+          <input type="text" className="input__search" placeholder="Buscar habitación" />
         </Grid>
       </Grid>
 
@@ -198,11 +83,7 @@ export const RoomsTable: React.FC = () => {
                 key={room.id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell
-                  component="th"
-                  scope="row"
-                  sx={{ fontWeight: '700' }}
-                >
+                <TableCell component="th" scope="row" sx={{ fontWeight: '700' }}>
                   N° {room.roomNumber}
                 </TableCell>
                 <TableCell align="left">{room.floor}</TableCell>
