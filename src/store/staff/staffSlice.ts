@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { type Employee } from '../../staff/interfaces/interfaces';
+import { staffData } from '../../lib/staff';
 
 export interface staffState {
   isSaving: boolean;
@@ -9,44 +10,7 @@ export interface staffState {
 
 const initialState: staffState = {
   isSaving: false,
-  staff: [
-    {
-      _id: 1,
-      nameComplete: 'Juan Pérez',
-      user: 'usmpfca1',
-      isActive: true,
-      number: '987654321',
-      email: 'juanPe2021@gmail.com',
-      password: '123456',
-    },
-    {
-      _id: 2,
-      nameComplete: 'María Sánchez',
-      user: 'usmpfca2',
-      isActive: true,
-      number: '924254322',
-      email: 'maria_sanchez@gmail.com',
-      password: '123456',
-    },
-    {
-      _id: 3,
-      nameComplete: 'Ana Martínez',
-      user: 'usmpfca3',
-      isActive: true,
-      number: '977888999',
-      email: 'ana_m21@hotmail.com',
-      password: 'passAna456',
-    },
-    {
-      _id: 4,
-      nameComplete: 'Luis Rodríguez',
-      user: 'usmpfca4',
-      isActive: false,
-      number: '912345678',
-      email: 'Garcialuis@hotmail.com',
-      password: 'luispass',
-    },
-  ],
+  staff: staffData,
   activeEmployee: null,
 };
 
