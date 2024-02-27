@@ -20,19 +20,7 @@ import {
 } from '@mui/icons-material';
 import { useForm, usePasswordToggle } from '../../hooks';
 import { useStaffStore, useUiStaffStore } from '../hooks';
-
-const style = {
-  position: 'relative',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 480,
-  height: 680,
-  bgcolor: 'background.paper',
-  borderRadius: '20px',
-  boxShadow: 24,
-  p: 5,
-};
+import { modalStyle } from '../../styles';
 
 const initialState = {
   _id: 0,
@@ -95,7 +83,7 @@ export const StaffModal: React.FC = () => {
           flexDirection="column"
           alignItems="center"
           justifyContent="center"
-          sx={style}
+          sx={modalStyle}
         >
           <IconButton className="close staff-modal" onClick={handleClose}>
             <Close />

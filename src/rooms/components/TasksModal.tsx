@@ -1,26 +1,7 @@
-import {
-  Backdrop,
-  Box,
-  IconButton,
-  InputBase,
-  Modal,
-  Typography,
-} from '@mui/material';
+import { Backdrop, Box, IconButton, InputBase, Modal, Typography } from '@mui/material';
 import { useUiRoomStore } from '../../hooks/useUiRoomStore';
 import { Close } from '@mui/icons-material';
-
-const style = {
-  position: 'relative',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 480,
-  height: 680,
-  bgcolor: 'background.paper',
-  borderRadius: '20px',
-  boxShadow: 24,
-  p: 5,
-};
+import { modalStyle } from '../../styles';
 
 export const TasksModal: React.FC = () => {
   const { isTaskModalOpen, closeTaskModal } = useUiRoomStore();
@@ -47,20 +28,13 @@ export const TasksModal: React.FC = () => {
         alignItems="center"
         justifyContent="flex-start"
         gap="20px"
-        sx={style}
+        sx={modalStyle}
       >
         <IconButton className="close task-modal" onClick={handleClose}>
           <Close />
         </IconButton>
         <h2>Agregar tareas</h2>
-        {/* <FormControl
-          sx={{ m: 1, backgroundColor: '#f8f8f8' }}
-          variant="filled"
-          fullWidth
-        >
-          <InputLabel>Agregar Tarea</InputLabel>
-          <FilledInput />
-        </FormControl> */}
+
         <InputBase
           fullWidth
           placeholder="Agregar tarea"
