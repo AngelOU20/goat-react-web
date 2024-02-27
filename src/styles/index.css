@@ -51,63 +51,6 @@ a {
   color: #4c4c4c;
 }
 
-/* Search */
-.container__search {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-
-  width: 580px;
-  height: 42px;
-  flex-shrink: 0;
-
-  border-radius: 4px;
-  border: 1px solid #e6e6e6;
-  background: #fafafa;
-}
-
-.icon__search {
-  font-size: 20px;
-  color: #4c4c4c;
-}
-
-.input__search {
-  width: 100%;
-  height: 38px;
-  font-size: 16px;
-  color: #4c4c4c;
-
-  margin: 0 10px;
-  background: #fafafa;
-  border: none;
-}
-
-.input__search::placeholder {
-  color: #4c4c4c;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-}
-
-.input__search:focus {
-  outline: none;
-}
-
-/* Search personal */
-.container__search-personal {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-
-  width: 380px;
-  height: 42px;
-  flex-shrink: 0;
-
-  border-radius: 4px;
-  border: 1px solid #e6e6e6;
-  background: #fafafa;
-}
-
 /* Modal */
 .close {
   position: absolute;
