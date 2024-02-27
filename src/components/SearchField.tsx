@@ -3,7 +3,15 @@ import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 
-export default function CustomizedInputBase(): JSX.Element {
+interface SearchFieldProps {
+  placeholder?: string;
+  onClick?: () => void;
+}
+
+export default function SearchField({
+  placeholder = 'Buscar',
+  onClick = () => {},
+}: SearchFieldProps): JSX.Element {
   return (
     <Paper
       component="form"
@@ -12,17 +20,18 @@ export default function CustomizedInputBase(): JSX.Element {
         display: 'flex',
         alignItems: 'center',
         width: '40%',
+        backgroundColor: '#fcfcfc',
         border: '1px solid #61616170',
         boxShadow: 'none',
       }}
     >
-      <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+      <IconButton onClick={onClick} type="button" sx={{ p: '10px' }} aria-label="search">
         <SearchIcon />
       </IconButton>
 
       <InputBase
         sx={{ ml: 1, flex: 1 }}
-        placeholder="Buscar"
+        placeholder={`${placeholder}`}
         inputProps={{ 'aria-label': 'search google maps' }}
       />
     </Paper>
