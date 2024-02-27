@@ -1,4 +1,4 @@
-import { Add, Search } from '@mui/icons-material';
+import { Add } from '@mui/icons-material';
 import {
   Button,
   Grid,
@@ -13,6 +13,7 @@ import {
 import { useStaffStore, useUiStaffStore } from '../hooks';
 import { StaffTableItem } from './';
 import { useState } from 'react';
+import SearchField from '../../components/SearchField';
 
 export const StaffTable: React.FC = () => {
   const { staff } = useStaffStore();
@@ -33,6 +34,10 @@ export const StaffTable: React.FC = () => {
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
+  };
+
+  const onSearchEmployee = (): void => {
+    console.log('Buscar empleado');
   };
 
   return (
@@ -62,10 +67,7 @@ export const StaffTable: React.FC = () => {
           </Button>
         </Grid>
 
-        <Grid className="container__search-personal">
-          <Search className="icon__search" />
-          <input type="text" className="input__search" placeholder="Buscar personal" />
-        </Grid>
+        <SearchField placeholder="Buscar personal" onClick={onSearchEmployee} />
       </Grid>
 
       <TableContainer sx={{ maxHeight: 500 }}>

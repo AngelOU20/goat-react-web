@@ -1,4 +1,4 @@
-import { Add, Search } from '@mui/icons-material';
+import { Add } from '@mui/icons-material';
 import {
   Button,
   Grid,
@@ -13,6 +13,7 @@ import {
 import { useState } from 'react';
 import { useUiRoomStore } from '../../hooks/useUiRoomStore';
 import { roomsData as rooms } from '../../lib/rooms';
+import SearchField from '../../components/SearchField';
 
 export const RoomsTable: React.FC = () => {
   const { openTaskModal, openAssignPersonalModal } = useUiRoomStore();
@@ -57,10 +58,7 @@ export const RoomsTable: React.FC = () => {
           </Button>
         </Grid>
 
-        <Grid className="container__search-personal">
-          <Search className="icon__search" />
-          <input type="text" className="input__search" placeholder="Buscar habitación" />
-        </Grid>
+        <SearchField placeholder="Buscar habitación" />
       </Grid>
 
       <TableContainer sx={{ maxHeight: 520 }}>
