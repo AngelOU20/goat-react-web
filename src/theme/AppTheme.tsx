@@ -1,7 +1,7 @@
+import PropTypes from 'prop-types';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import { colorTheme } from './colorTheme';
-import PropTypes from 'prop-types';
 
 interface Props {
   children?: React.ReactNode;
