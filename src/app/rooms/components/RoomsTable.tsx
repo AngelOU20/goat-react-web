@@ -13,7 +13,7 @@ import {
 import { useState } from 'react';
 import { useUiRoomStore } from '@/hooks';
 import { roomsData as rooms } from '@/lib/rooms';
-import SearchField from '@/components/SearchField';
+import SearchField from '@/app/components/SearchField';
 
 export const RoomsTable: React.FC = () => {
   const { openTaskModal, openAssignPersonalModal } = useUiRoomStore();

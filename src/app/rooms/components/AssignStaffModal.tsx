@@ -11,7 +11,7 @@ import {
   TableRow,
 } from '@mui/material';
 import { useUiRoomStore } from '@/hooks';
-import { useStaffStore } from '@/staff/hooks';
+import { useStaffStore } from '@/app/staff/hooks';
 import { modalStyleAssignStaff } from '@/styles';
 
 export const AssignStaffModal: React.FC = () => {

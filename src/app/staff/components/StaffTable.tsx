@@ -11,7 +11,7 @@ import {
   TablePagination,
   TableRow,
 } from '@mui/material';
-import SearchField from '@/components/SearchField';
+import SearchField from '@/app/components/SearchField';
 import { useStaffStore, useUiStaffStore } from '../hooks';
 import { StaffTableItem } from './';
 

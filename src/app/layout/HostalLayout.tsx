@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Box, Container } from '@mui/material';
-import { Header, SideBar } from '@/components';
+import { Header, SideBar } from '@/app/components';
 
 interface Props {
   children: React.ReactNode;

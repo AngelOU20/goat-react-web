@@ -1,7 +1,7 @@
 import { Box, Button, Card, CardContent, CardHeader, Typography } from '@mui/material';
 import { Groups, MeetingRoom } from '@mui/icons-material';
-import { HostalLayout } from '@/layout/HostalLayout';
-import { useStaffStore } from '@/staff/hooks';
+import { HostalLayout } from '@/app/layout/HostalLayout';
+import { useStaffStore } from '@/app/staff/hooks';
 
 export const DashboardPage: React.FC = () => {
   const { staff } = useStaffStore();
