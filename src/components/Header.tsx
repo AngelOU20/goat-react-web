@@ -1,12 +1,11 @@
 import PropTypes from 'prop-types';
-import { Notifications } from '@mui/icons-material';
-
+import { Menu, Notifications } from '@mui/icons-material';
 import {
+  Grid,
   Avatar,
   Badge,
   Box,
   Container,
-  Grid,
   IconButton,
   ListItem,
   ListItemAvatar,
@@ -34,7 +33,10 @@ export const Header: React.FC<Props> = ({ drawerWidth = 240 }) => {
       alignItems="center"
       sx={{
         height: { sm: '100px' },
-        width: { sm: `calc(100% - ${drawerWidth}px)` },
+        width: {
+          xs: '100vw',
+          sm: `calc(100% - ${drawerWidth}px)`,
+        },
         ml: { sm: `${drawerWidth}px` },
         zIndex: 100,
         backgroundColor: '#ffffff',
@@ -42,14 +44,24 @@ export const Header: React.FC<Props> = ({ drawerWidth = 240 }) => {
     >
       <Container maxWidth="xl">
         <Toolbar>
-          <Grid container direction="row" justifyContent="end" alignItems="center">
-            <Grid
-              item
-              xs={3}
-              display="flex"
-              justifyContent="space-between"
-              alignItems="center"
-            >
+          <Grid
+            container
+            display="flex"
+            direction="row"
+            justifyContent={{ xs: 'space-between', sm: 'end' }}
+            alignItems="center"
+          >
+            <Grid display={{ xs: 'block', sm: 'none' }}>
+              <IconButton
+                size="large"
+                aria-label="menu for mobile display"
+                color="inherit"
+              >
+                <Menu />
+              </IconButton>
+            </Grid>
+
+            <Grid item display="flex" justifyContent="space-between" alignItems="center">
               <ListItem>
                 <ListItemAvatar>
                   <Avatar alt="Profile Picture" src={user.photoURL} />

@@ -10,8 +10,9 @@ export const DashboardPage: React.FC = () => {
     <HostalLayout>
       <Box
         display="flex"
-        gap="10px"
         justifyContent="flex-end"
+        flexWrap="wrap"
+        gap="10px"
         sx={{ marginBottom: '3em' }}
       >
         <Button variant="contained">30 días</Button>
@@ -20,7 +21,15 @@ export const DashboardPage: React.FC = () => {
         <Button variant="outlined">12 meses</Button>
       </Box>
 
-      <Box display="flex" gap="30px" justifyContent="flex-start">
+      <Box
+        display="flex"
+        flexWrap="wrap"
+        gap="30px"
+        justifyContent={{
+          xs: 'center',
+          sm: 'flex-start',
+        }}
+      >
         <Card
           sx={{
             minHeight: 110,

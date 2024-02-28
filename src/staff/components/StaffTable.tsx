@@ -42,11 +42,18 @@ export const StaffTable: React.FC = () => {
 
   return (
     <>
-      <Grid container display="flex" justifyContent="space-between" margin="30px 0">
+      <Grid
+        container
+        display="flex"
+        flexWrap="wrap"
+        justifyContent="space-between"
+        margin="30px 0"
+      >
         <Grid
           item
           xs={4}
           display="flex"
+          flexWrap="wrap"
           justifyContent="space-between"
           alignItems="center"
           gap="20px"

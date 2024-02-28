@@ -20,10 +20,12 @@ export const HostalLayout: React.FC<Props> = ({ children }) => {
           flexGrow: 1,
           p: 3,
           marginTop: '100px',
-          // width: { sm: `calc(100% - ${drawerWidth}px)` },
+          width: {
+            xs: '100%',
+            sm: `calc(100% - ${drawerWidth}px)`,
+          },
         }}
       >
-        {/* <Toolbar /> */}
         <Container>{children}</Container>
       </Box>
     </Box>

@@ -36,7 +36,7 @@ export const SideBar: React.FC<Props> = ({ drawerWidth = 240 }) => {
         gap: '80px',
 
         display: {
-          // xs: 'block',
+          xs: 'none',
           sm: 'flex',
         },
       }}
