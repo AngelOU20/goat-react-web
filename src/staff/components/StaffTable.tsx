@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Add } from '@mui/icons-material';
 import {
   Button,
@@ -10,10 +11,9 @@ import {
   TablePagination,
   TableRow,
 } from '@mui/material';
+import SearchField from '@/components/SearchField';
 import { useStaffStore, useUiStaffStore } from '../hooks';
 import { StaffTableItem } from './';
-import { useState } from 'react';
-import SearchField from '../../components/SearchField';
 
 export const StaffTable: React.FC = () => {
   const { staff } = useStaffStore();

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { type RootState } from '../../store';
-import { onCloseStaffModal, onOpenStaffModal } from '../../store/ui/uiStaffSlice';
+import { type RootState } from '@/store';
+import { onCloseStaffModal, onOpenStaffModal } from '@/store/ui/uiStaffSlice';
 
 export const useUiStaffStore = (): {
   isStaffModalOpen: boolean;

@@ -1,8 +1,7 @@
 import { AuthLayout } from '../layout/AuthLayout';
-import { useForm, usePasswordToggle } from '../../hooks';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { Button, Grid, IconButton, InputAdornment, TextField } from '@mui/material';
-import { useAuthStore } from '../../hooks/useAuthStore';
+import { useForm, usePasswordToggle, useAuthStore } from '@/hooks';
 
 const initialState = {
   email: '',

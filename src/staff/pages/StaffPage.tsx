@@ -1,6 +1,6 @@
-import { StaffTable, StaffModal } from '../components';
-import { HostalLayout } from '../../layout/HostalLayout';
 import { Typography } from '@mui/material';
+import { HostalLayout } from '@/layout/HostalLayout';
+import { StaffTable, StaffModal } from '../components';
 
 export const StaffPage: React.FC = () => {
   return (

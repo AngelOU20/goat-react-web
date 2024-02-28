@@ -11,9 +11,9 @@ import {
   TableRow,
 } from '@mui/material';
 import { useState } from 'react';
-import { useUiRoomStore } from '../../hooks/useUiRoomStore';
-import { roomsData as rooms } from '../../lib/rooms';
-import SearchField from '../../components/SearchField';
+import { useUiRoomStore } from '@/hooks';
+import { roomsData as rooms } from '@/lib/rooms';
+import SearchField from '@/components/SearchField';
 
 export const RoomsTable: React.FC = () => {
   const { openTaskModal, openAssignPersonalModal } = useUiRoomStore();

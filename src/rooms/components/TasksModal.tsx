@@ -1,7 +1,7 @@
 import { Backdrop, Box, IconButton, InputBase, Modal, Typography } from '@mui/material';
-import { useUiRoomStore } from '../../hooks/useUiRoomStore';
 import { Close } from '@mui/icons-material';
-import { modalStyle } from '../../styles';
+import { useUiRoomStore } from '@/hooks';
+import { modalStyle } from '@/styles';
 
 export const TasksModal: React.FC = () => {
   const { isTaskModalOpen, closeTaskModal } = useUiRoomStore();

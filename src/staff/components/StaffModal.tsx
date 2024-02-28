@@ -18,9 +18,9 @@ import {
   Visibility,
   VisibilityOff,
 } from '@mui/icons-material';
-import { useForm, usePasswordToggle } from '../../hooks';
+import { useForm, usePasswordToggle } from '@/hooks';
+import { modalStyle } from '@/styles';
 import { useStaffStore, useUiStaffStore } from '../hooks';
-import { modalStyle } from '../../styles';
 
 const initialState = {
   _id: 0,

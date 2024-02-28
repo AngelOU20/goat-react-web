@@ -1,7 +1,6 @@
 import { Typography } from '@mui/material';
-import { HostalLayout } from '../../layout/HostalLayout';
-import { RoomsTable, TasksModal } from '../components';
-import { AssignStaffModal } from '../components/AssignStaffModal';
+import { HostalLayout } from '@/layout/HostalLayout';
+import { AssignStaffModal, RoomsTable, TasksModal } from '../components';
 
 export const RoomsPage: React.FC = () => {
   return (

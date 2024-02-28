@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import {
   List,
   ListItem,
@@ -6,10 +7,10 @@ import {
   ListItemText,
   ListItemButton,
   Box,
+  // Drawer,
 } from '@mui/material';
 import { Dashboard, Person, Summarize, Settings, Logout } from '@mui/icons-material';
-import { NavLink } from 'react-router-dom';
-import { useAuthStore } from '../hooks/useAuthStore';
+import { useAuthStore } from '@/hooks';
 
 interface Props {
   drawerWidth?: number;
@@ -25,15 +26,19 @@ export const SideBar: React.FC<Props> = ({ drawerWidth = 240 }) => {
   return (
     <Box
       component="div"
-      display="flex"
-      flexDirection="column"
-      gap="80px"
       sx={{
-        backgroundColor: '#1F3B51',
+        backgroundColor: 'primary.main',
         width: { sm: drawerWidth },
         height: '100vh',
         flexShrink: { sm: 0 },
         padding: '20px',
+        flexDirection: 'column',
+        gap: '80px',
+
+        display: {
+          // xs: 'block',
+          sm: 'flex',
+        },
       }}
     >
       <Box component="div" display="flex" justifyContent="center" alignContent="center">

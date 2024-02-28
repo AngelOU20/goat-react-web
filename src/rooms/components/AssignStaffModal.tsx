@@ -10,9 +10,9 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
-import { useUiRoomStore } from '../../hooks/useUiRoomStore';
-import { useStaffStore } from '../../staff/hooks';
-import { modalStyleAssignStaff } from '../../styles';
+import { useUiRoomStore } from '@/hooks';
+import { useStaffStore } from '@/staff/hooks';
+import { modalStyleAssignStaff } from '@/styles';
 
 export const AssignStaffModal: React.FC = () => {
   const { isAssignPersonalModalOpen, closeAssignPersonalModal } = useUiRoomStore();

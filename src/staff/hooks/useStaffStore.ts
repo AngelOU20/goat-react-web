@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { type RootState } from '../../store';
+import { type RootState } from '@/store';
 import { type Employee } from '../interfaces/interfaces';
 import {
   onAddNewEmployee,
@@ -7,7 +7,7 @@ import {
   onSetActiveEmployee,
   onUpdateEmployee,
   onDeleteEmployeeById,
-} from '../../store/staff/staffSlice';
+} from '@/store/staff/staffSlice';
 
 interface StaffStoreOptions {
   activeEmployee: Employee | null;

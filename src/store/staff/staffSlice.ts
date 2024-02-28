@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { type Employee } from '../../staff/interfaces/interfaces';
-import { staffData } from '../../lib/staff';
+import { type Employee } from '@/staff/interfaces/interfaces';
+import { staffData } from '@/lib/staff';
 
 export interface staffState {
   isSaving: boolean;
