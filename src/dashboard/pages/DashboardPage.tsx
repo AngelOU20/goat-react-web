@@ -10,7 +10,10 @@ export const DashboardPage: React.FC = () => {
     <HostalLayout>
       <Box
         display="flex"
-        justifyContent="flex-end"
+        justifyContent={{
+          xs: 'flex-start',
+          sm: 'flex-end',
+        }}
         flexWrap="wrap"
         gap="10px"
         sx={{ marginBottom: '3em' }}
