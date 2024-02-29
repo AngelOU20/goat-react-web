@@ -12,6 +12,7 @@ import {
   ListItemText,
   Toolbar,
 } from '@mui/material';
+import { useUiStore } from '@/hooks';
 
 interface Props {
   drawerWidth?: number;
@@ -25,6 +26,8 @@ const user = {
 };
 
 export const Header: React.FC<Props> = ({ drawerWidth = 240 }) => {
+  const { onOpenDrawer } = useUiStore();
+
   return (
     <Box
       position="fixed"
@@ -38,6 +41,7 @@ export const Header: React.FC<Props> = ({ drawerWidth = 240 }) => {
           sm: `calc(100% - ${drawerWidth}px)`,
         },
         ml: { sm: `${drawerWidth}px` },
+        mt: { xs: '20px' },
         zIndex: 100,
         backgroundColor: '#ffffff',
       }}
@@ -56,6 +60,7 @@ export const Header: React.FC<Props> = ({ drawerWidth = 240 }) => {
                 size="large"
                 aria-label="menu for mobile display"
                 color="inherit"
+                onClick={onOpenDrawer}
               >
                 <Menu />
               </IconButton>

@@ -7,10 +7,10 @@ import {
   ListItemText,
   ListItemButton,
   Box,
-  // Drawer,
+  Drawer,
 } from '@mui/material';
 import { Dashboard, Person, Summarize, Settings, Logout } from '@mui/icons-material';
-import { useAuthStore } from '@/hooks';
+import { useAuthStore, useUiStore } from '@/hooks';
 
 interface Props {
   drawerWidth?: number;
@@ -18,25 +18,34 @@ interface Props {
 
 export const SideBar: React.FC<Props> = ({ drawerWidth = 240 }) => {
   const { startLogout } = useAuthStore();
+  const { isDrawerOpen, onCloseDrawer } = useUiStore();
 
   const handleLogout = (): void => {
     startLogout();
   };
 
   return (
-    <Box
+    <Drawer
       component="div"
+      variant={`${isDrawerOpen ? 'temporary' : 'permanent'}`}
+      open={true}
+      anchor="left"
+      onClose={onCloseDrawer}
       sx={{
-        backgroundColor: 'primary.main',
         width: { sm: drawerWidth },
-        height: '100vh',
-        flexShrink: { sm: 0 },
-        padding: '20px',
-        flexDirection: 'column',
-        gap: '80px',
+
+        '& .MuiDrawer-paper': {
+          backgroundColor: 'primary.main',
+          width: { sm: drawerWidth },
+          height: '100vh',
+          flexShrink: { sm: 0 },
+          padding: '20px',
+          flexDirection: 'column',
+          gap: '80px',
+        },
 
         display: {
-          xs: 'none',
+          xs: isDrawerOpen ? 'block' : 'none',
           sm: 'flex',
         },
       }}
@@ -112,7 +121,7 @@ export const SideBar: React.FC<Props> = ({ drawerWidth = 240 }) => {
           </ListItem>
         </List>
       </Box>
-    </Box>
+    </Drawer>
   );
 };
 
