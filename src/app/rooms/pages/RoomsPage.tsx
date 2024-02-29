@@ -1,20 +1,11 @@
-import { Typography } from '@mui/material';
 import { HostalLayout } from '@/app/layout/HostalLayout';
 import { AssignStaffModal, RoomsTable, TasksModal } from '../components';
+import { PageTitle } from '@/app/components/PageTitle';
 
 export const RoomsPage: React.FC = () => {
   return (
     <HostalLayout>
-      <Typography
-        variant="h2"
-        sx={{
-          fontSize: '30px',
-          fontWeight: '700',
-          marginBottom: '4rem',
-        }}
-      >
-        Habitaciones
-      </Typography>
+      <PageTitle>Habitaciones</PageTitle>
       <RoomsTable />
       <TasksModal />
       <AssignStaffModal />
