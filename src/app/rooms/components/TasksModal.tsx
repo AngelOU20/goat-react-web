@@ -28,12 +28,34 @@ export const TasksModal: React.FC = () => {
         alignItems="center"
         justifyContent="flex-start"
         gap="20px"
-        sx={modalStyle}
+        sx={{
+          ...modalStyle,
+          width: { xs: '400px', sm: '480px' },
+          height: { xs: '600px', sm: '680px' },
+        }}
       >
-        <IconButton className="close task-modal" onClick={handleClose}>
+        <IconButton
+          onClick={handleClose}
+          sx={{
+            position: 'absolute',
+            right: 8,
+            top: 8,
+            color: 'grey',
+          }}
+        >
           <Close />
         </IconButton>
-        <h2>Agregar tareas</h2>
+        <Typography
+          variant="h2"
+          sx={{
+            fontSize: '30px',
+            fontWeight: '700',
+            textAlign: 'center',
+            marginBottom: '30px',
+          }}
+        >
+          Agregar tareas
+        </Typography>
 
         <InputBase
           fullWidth

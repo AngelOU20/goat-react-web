@@ -28,8 +28,12 @@ export const SideBar: React.FC<Props> = ({ drawerWidth = 240 }) => {
     <Drawer
       component="div"
       variant={`${isDrawerOpen ? 'temporary' : 'permanent'}`}
-      open={true}
       anchor="left"
+      open={true}
+      transitionDuration={{
+        enter: 500,
+        exit: 500,
+      }}
       onClose={onCloseDrawer}
       sx={{
         width: { sm: drawerWidth },
@@ -48,6 +52,9 @@ export const SideBar: React.FC<Props> = ({ drawerWidth = 240 }) => {
           xs: isDrawerOpen ? 'block' : 'none',
           sm: 'flex',
         },
+      }}
+      ModalProps={{
+        keepMounted: true, // Better open performance on mobile.
       }}
     >
       <Box component="div" display="flex" justifyContent="center" alignContent="center">

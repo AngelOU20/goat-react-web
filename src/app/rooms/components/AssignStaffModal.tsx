@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import { useUiRoomStore } from '@/hooks';
 import { useStaffStore } from '@/app/staff/hooks';
-import { modalStyleAssignStaff } from '@/styles';
+import { modalStyle } from '@/styles';
 
 export const AssignStaffModal: React.FC = () => {
   const { isAssignPersonalModalOpen, closeAssignPersonalModal } = useUiRoomStore();
@@ -41,7 +41,7 @@ export const AssignStaffModal: React.FC = () => {
         alignItems="center"
         justifyContent="flex-start"
         gap="20px"
-        sx={modalStyleAssignStaff}
+        sx={{ ...modalStyle, width: { xs: '400px', sm: '600px' }, height: '700px' }}
       >
         <h2>Asignar Personal</h2>
 

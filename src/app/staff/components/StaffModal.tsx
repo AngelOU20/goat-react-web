@@ -66,151 +66,163 @@ export const StaffModal: React.FC = () => {
   };
 
   return (
-    <>
-      <Modal
-        open={isStaffModalOpen}
-        onClose={handleClose}
-        closeAfterTransition
-        slots={{ backdrop: Backdrop }}
-        slotProps={{
-          backdrop: {
-            timeout: 100,
-          },
+    <Modal
+      open={isStaffModalOpen}
+      onClose={handleClose}
+      closeAfterTransition
+      slots={{ backdrop: Backdrop }}
+      slotProps={{
+        backdrop: {
+          timeout: 100,
+        },
+      }}
+    >
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        sx={{
+          ...modalStyle,
+          width: { xs: '400px', sm: '480px' },
+          height: { xs: '600px', sm: '680px' },
         }}
       >
-        <Box
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          sx={modalStyle}
+        <IconButton
+          onClick={handleClose}
+          sx={{
+            position: 'absolute',
+            right: 8,
+            top: 8,
+            color: 'grey',
+          }}
         >
-          <IconButton className="close staff-modal" onClick={handleClose}>
-            <Close />
-          </IconButton>
+          <Close />
+        </IconButton>
 
-          <Typography
-            variant="h2"
+        <Typography
+          variant="h2"
+          sx={{
+            fontSize: '30px',
+            fontWeight: '700',
+            textAlign: 'center',
+            marginBottom: '30px',
+          }}
+        >
+          {activeEmployee === null ? 'Nuevo Personal' : 'Editar Personal'}
+        </Typography>
+
+        <Box
+          component="form"
+          onSubmit={onSubmit}
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          flexDirection="column"
+          gap="10px"
+        >
+          <TextField
+            label="Nombre completo"
+            name="nameComplete"
+            value={nameComplete}
+            onChange={onInputChange}
+            sx={{ m: 1, width: { xs: '100%', sm: '380px' } }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <Person2Outlined />
+                </InputAdornment>
+              ),
+            }}
+          />
+
+          <TextField
+            label="Usuario"
+            name="user"
+            value={user}
+            onChange={onInputChange}
+            sx={{ m: 1, width: { xs: '100%', sm: '380px' } }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <Person2Outlined />
+                </InputAdornment>
+              ),
+            }}
+          />
+
+          <TextField
+            label="Email"
+            name="email"
+            value={email}
+            onChange={onInputChange}
+            sx={{ m: 1, width: { xs: '100%', sm: '380px' } }}
+            type="email"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <MailOutline />
+                </InputAdornment>
+              ),
+            }}
+          />
+
+          <TextField
+            label="Número"
+            name="number"
+            value={number}
+            onChange={onInputChange}
+            sx={{ m: 1, width: { xs: '100%', sm: '380px' } }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <ContactPhone />
+                </InputAdornment>
+              ),
+            }}
+          />
+
+          <TextField
+            label="Contraseña"
+            autoComplete="off"
+            name="password"
+            value={password}
+            onChange={onInputChange}
+            sx={{ m: 1, width: { xs: '100%', sm: '380px' } }}
+            type={showPassword ? 'text' : 'password'}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
+
+          <Button
+            variant="contained"
+            type="submit"
             sx={{
-              fontSize: '30px',
-              fontWeight: '700',
-              textAlign: 'center',
-              marginBottom: '30px',
+              borderRadius: '5px',
+              fontSize: { xs: '14px', sm: '16px' },
+              fontWeight: '600',
+              m: 1,
+              padding: '12px 20px',
+              textTransform: 'capitalize',
+              width: { xs: '100%', sm: '380px' },
             }}
           >
-            {activeEmployee === null ? 'Nuevo Personal' : 'Editar Personal'}
-          </Typography>
-
-          <Box
-            component="form"
-            onSubmit={onSubmit}
-            display="flex"
-            flexDirection="column"
-            gap="10px"
-          >
-            <TextField
-              label="Nombre completo"
-              name="nameComplete"
-              value={nameComplete}
-              onChange={onInputChange}
-              sx={{ m: 1, width: '350px' }}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <Person2Outlined />
-                  </InputAdornment>
-                ),
-              }}
-            />
-
-            <TextField
-              label="Usuario"
-              name="user"
-              value={user}
-              onChange={onInputChange}
-              sx={{ m: 1, width: '350px' }}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <Person2Outlined />
-                  </InputAdornment>
-                ),
-              }}
-            />
-
-            <TextField
-              label="Email"
-              name="email"
-              value={email}
-              onChange={onInputChange}
-              sx={{ m: 1, width: '350px' }}
-              type="email"
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <MailOutline />
-                  </InputAdornment>
-                ),
-              }}
-            />
-
-            <TextField
-              label="Número"
-              name="number"
-              value={number}
-              onChange={onInputChange}
-              sx={{ m: 1, width: '350px' }}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <ContactPhone />
-                  </InputAdornment>
-                ),
-              }}
-            />
-
-            <TextField
-              label="Contraseña"
-              autoComplete="off"
-              name="password"
-              value={password}
-              onChange={onInputChange}
-              sx={{ m: 1, width: '350px' }}
-              type={showPassword ? 'text' : 'password'}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            />
-
-            <Button
-              variant="contained"
-              type="submit"
-              sx={{
-                fontSize: '16px',
-                fontWeight: '600',
-                textTransform: 'capitalize',
-                padding: '12px 20px',
-                borderRadius: '5px',
-                width: '350px',
-                m: 1,
-              }}
-            >
-              {activeEmployee === null ? 'Agregar nuevo personal' : 'Guardar'}
-            </Button>
-          </Box>
+            {activeEmployee === null ? 'Agregar nuevo personal' : 'Guardar'}
+          </Button>
         </Box>
-      </Modal>
-    </>
+      </Box>
+    </Modal>
   );
 };
