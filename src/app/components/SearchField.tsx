@@ -16,10 +16,9 @@ export default function SearchField({
     <Paper
       component="form"
       sx={{
-        p: '0px 4px',
+        p: '0px 8px',
         display: 'flex',
         alignItems: 'center',
-        width: '40%',
         backgroundColor: '#fcfcfc',
         border: '1px solid #61616170',
         boxShadow: 'none',

@@ -45,18 +45,17 @@ export const StaffTable: React.FC = () => {
       <Grid
         container
         display="flex"
-        flexWrap="wrap"
+        flexDirection={{ xs: 'column', sm: 'row' }}
         justifyContent="space-between"
+        gap="20px"
         margin="30px 0"
       >
         <Grid
           item
-          xs={4}
           display="flex"
-          flexWrap="wrap"
           justifyContent="space-between"
           alignItems="center"
-          gap="20px"
+          gap="30px"
         >
           <h3>Total ({staff.length})</h3>
           <Button
@@ -65,9 +64,9 @@ export const StaffTable: React.FC = () => {
             variant="contained"
             color="primary"
             sx={{
-              fontSize: '16px',
+              fontSize: { sx: '12px', sm: '16px' },
               textTransform: 'capitalize',
-              padding: '8px 20px',
+              padding: { sx: '6px 18px', sm: '8px 20px' },
             }}
           >
             Agregar nuevo

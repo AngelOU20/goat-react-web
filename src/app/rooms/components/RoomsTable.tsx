@@ -34,14 +34,20 @@ export const RoomsTable: React.FC = () => {
 
   return (
     <>
-      <Grid container display="flex" justifyContent="space-between" margin="30px 0">
+      <Grid
+        container
+        display="flex"
+        flexDirection={{ xs: 'column', sm: 'row' }}
+        justifyContent="space-between"
+        gap="20px"
+        margin="30px 0"
+      >
         <Grid
           item
-          xs={4}
           display="flex"
           justifyContent="space-between"
           alignItems="center"
-          gap="20px"
+          gap="30px"
         >
           <h3>Total ({rooms.length})</h3>
           <Button
@@ -49,9 +55,9 @@ export const RoomsTable: React.FC = () => {
             variant="contained"
             color="primary"
             sx={{
-              fontSize: '16px',
+              fontSize: { sx: '12px', sm: '16px' },
               textTransform: 'capitalize',
-              padding: '8px 20px',
+              padding: { sx: '6px 18px', sm: '8px 20px' },
             }}
           >
             Agregar nuevo
