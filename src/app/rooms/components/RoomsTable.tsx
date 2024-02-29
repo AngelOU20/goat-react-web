@@ -92,7 +92,9 @@ export const RoomsTable: React.FC = () => {
                 </TableCell>
                 <TableCell align="left">{room.floor}</TableCell>
                 <TableCell align="left">{room.status}</TableCell>
-                <TableCell align="left">{room.availability}</TableCell>
+                <TableCell align="left">
+                  {room.isAvailability ? 'Disponible' : 'No disponible'}
+                </TableCell>
                 <TableCell align="center">
                   <Button
                     size="small"
