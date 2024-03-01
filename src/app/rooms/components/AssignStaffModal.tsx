@@ -2,6 +2,7 @@ import {
   Backdrop,
   Box,
   Button,
+  IconButton,
   Modal,
   Table,
   TableBody,
@@ -13,6 +14,7 @@ import {
 import { useUiRoomStore } from '@/hooks';
 import { useStaffStore } from '@/app/staff/hooks';
 import { modalStyle } from '@/styles';
+import { Close } from '@mui/icons-material';
 
 export const AssignStaffModal: React.FC = () => {
   const { isAssignPersonalModalOpen, closeAssignPersonalModal } = useUiRoomStore();
@@ -43,6 +45,17 @@ export const AssignStaffModal: React.FC = () => {
         gap="20px"
         sx={{ ...modalStyle, width: { xs: '400px', sm: '600px' }, height: '700px' }}
       >
+        <IconButton
+          onClick={handleClose}
+          sx={{
+            position: 'absolute',
+            right: 8,
+            top: 8,
+            color: 'grey',
+          }}
+        >
+          <Close />
+        </IconButton>
         <h2>Asignar Personal</h2>
 
         <TableContainer>
