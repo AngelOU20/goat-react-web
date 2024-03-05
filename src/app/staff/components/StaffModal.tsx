@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { type Employee } from '../interfaces/interfaces';
+import { type Employee } from '../../interfaces/interfaces';
 import {
   Backdrop,
   Box,

@@ -9,7 +9,7 @@ import {
   TableRow,
 } from '@mui/material';
 import { StaffTableItem } from './';
-import { type Employee } from '../interfaces/interfaces';
+import { type Employee } from '../../interfaces/interfaces';
 
 interface StaffTableProps {
   staff: Employee[];

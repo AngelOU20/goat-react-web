@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { type Employee } from '@/app/staff/interfaces/interfaces';
+import { type Employee } from '@/app/interfaces/interfaces';
 import { staffData } from '@/lib/staff';
 
 export interface staffState {
