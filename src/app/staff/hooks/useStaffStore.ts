@@ -3,7 +3,7 @@ import { type RootState } from '@/store';
 import { type Employee } from '../../interfaces/interfaces';
 import {
   onAddNewEmployee,
-  onClearEmployeeActive,
+  onClearActiveEmployee,
   onSetActiveEmployee,
   onUpdateEmployee,
   onDeleteEmployeeById,
@@ -46,7 +46,7 @@ export const useStaffStore = (): StaffStoreOptions => {
   };
 
   const clearEmployeeActive = (): void => {
-    dispatch(onClearEmployeeActive());
+    dispatch(onClearActiveEmployee());
   };
 
   const startDeletingEmployee = (): void => {

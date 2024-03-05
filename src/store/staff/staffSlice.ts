@@ -21,7 +21,7 @@ export const staffSlice = createSlice({
     onSetActiveEmployee: (state, action) => {
       state.activeEmployee = action.payload;
     },
-    onClearEmployeeActive: (state) => {
+    onClearActiveEmployee: (state) => {
       state.activeEmployee = null;
     },
     onAddNewEmployee: (state, action) => {
@@ -49,7 +49,7 @@ export const staffSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const {
   onSetActiveEmployee,
-  onClearEmployeeActive,
+  onClearActiveEmployee,
   onAddNewEmployee,
   onUpdateEmployee,
   onDeleteEmployeeById,
