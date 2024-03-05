@@ -1,31 +1,23 @@
-import { useState } from 'react';
 import { Add } from '@mui/icons-material';
 import { Button, Grid } from '@mui/material';
+import { usePagination } from '@/hooks';
 import { HostalLayout } from '@/app/layout/HostalLayout';
 import { PageTitle, SearchField } from '@/app/components';
 import { StaffModal, StaffTable } from '../components';
 import { useStaffStore, useUiStaffStore } from '../hooks';
+import { type Employee } from '@/app/interfaces/interfaces';
 
 export const StaffPage: React.FC = () => {
   const { staff } = useStaffStore();
   const { openStaffModal } = useUiStaffStore();
 
-  const [page, setPage] = useState(0); // Estado para la página actual
-  const [rowsPerPage, setRowsPerPage] = useState(5); // Estado para la cantidad de filas por página
-
-  const visibleEmployees = staff.slice(
-    page * rowsPerPage,
-    page * rowsPerPage + rowsPerPage
-  );
-
-  const handleChangePage = (_event: unknown, newPage: number): void => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
+  const {
+    page,
+    rowsPerPage,
+    visibleData: visibleEmployees,
+    handleChangePage,
+    handleChangeRowsPerPage,
+  } = usePagination<Employee>(staff);
 
   const onSearchEmployee = (): void => {
     console.log('Buscar empleado');
