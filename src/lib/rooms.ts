@@ -5,8 +5,6 @@ export const roomsData = [
     floor: 'Primer piso',
     status: 'Abierto',
     isAvailability: true,
-    observations: [],
-    tasks: [],
   },
   {
     id: 108,
@@ -14,8 +12,6 @@ export const roomsData = [
     floor: 'Segundo piso',
     status: 'Abierto',
     isAvailability: true,
-    observations: [],
-    tasks: [],
   },
   {
     id: 109,
@@ -23,8 +19,6 @@ export const roomsData = [
     floor: 'Tercer piso',
     status: 'Cerrado',
     isAvailability: false,
-    observations: [],
-    tasks: [],
   },
   {
     id: 110,
@@ -32,8 +26,6 @@ export const roomsData = [
     floor: 'Tercer piso',
     status: 'Abierto',
     isAvailability: true,
-    observations: [],
-    tasks: [],
   },
   {
     id: 111,
@@ -41,8 +33,6 @@ export const roomsData = [
     floor: 'Cuarto piso',
     status: 'Cerrado',
     isAvailability: false,
-    observations: [],
-    tasks: [],
   },
   {
     id: 112,
@@ -50,8 +40,6 @@ export const roomsData = [
     floor: 'Cuarto piso',
     status: 'Abierto',
     isAvailability: true,
-    observations: [],
-    tasks: [],
   },
   {
     id: 113,
@@ -59,8 +47,6 @@ export const roomsData = [
     floor: 'Quinto piso',
     status: 'Abierto',
     isAvailability: true,
-    observations: [],
-    tasks: [],
   },
   {
     id: 114,
@@ -68,8 +54,6 @@ export const roomsData = [
     floor: 'Quinto piso',
     status: 'Cerrado',
     isAvailability: false,
-    observations: [],
-    tasks: [],
   },
   {
     id: 115,
@@ -77,8 +61,6 @@ export const roomsData = [
     floor: 'Sexto piso',
     status: 'Cerrado',
     isAvailability: false,
-    observations: [],
-    tasks: [],
   },
   {
     id: 116,
@@ -86,8 +68,6 @@ export const roomsData = [
     floor: 'Sexto piso',
     status: 'Abierto',
     isAvailability: true,
-    observations: [],
-    tasks: [],
   },
   {
     id: 117,
@@ -95,7 +75,5 @@ export const roomsData = [
     floor: 'Séptimo piso',
     status: 'Abierto',
     isAvailability: true,
-    observations: [],
-    tasks: [],
   },
 ];
