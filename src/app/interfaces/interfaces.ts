@@ -7,3 +7,11 @@ export interface Employee {
   email: string;
   password: string;
 }
+
+export interface Room {
+  id: number,
+  roomNumber: string,
+  floor: string,
+  status: string,
+  isAvailability: boolean,
+}
