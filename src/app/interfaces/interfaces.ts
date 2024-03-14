@@ -15,3 +15,18 @@ export interface Room {
   status: string,
   isAvailability: boolean,
 }
+
+export interface RoomOperation {
+  uuid: number,
+  roomId: number,
+  personalId: number,
+  tasks: [],
+  observations: [],
+  createDate: string,
+}
+
+export interface Task {
+  id: number,
+  title: string,
+  isCompleted: boolean,
+}
